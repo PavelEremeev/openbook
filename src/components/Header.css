@@ -1,0 +1,9 @@
+.header__container {
+  display: flex;
+}
+
+.header__logo {
+  font-family: "Raleway Semibold";
+  color: black;
+  margin-left: 150px;
+}
