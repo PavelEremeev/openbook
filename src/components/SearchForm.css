@@ -66,10 +66,17 @@
   font-family: "Raleway SemiBold";
   transition: 0.3s ease;
   font-size: 17px;
+  background-color: #b22222;
+  opacity: 0.8;
+  color: white;
 }
 
 .search-form__button:hover {
-  opacity: 0.7;
   transition: 0.3s ease;
   cursor: pointer;
+  background-color: #8b0000;
+}
+
+.search-form__results-numb {
+  margin-top: 50px;
 }
