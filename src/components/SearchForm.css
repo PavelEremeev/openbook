@@ -7,7 +7,7 @@
 
 .search-form__background {
   background-image: url(../images/books-1245690_1920.jpg);
-  min-height: 720px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,8 +40,8 @@
 
 .search-form__form {
   position: absolute;
-  bottom: 50%;
-  left: 25%;
+  bottom: 10%;
+  left: 30%;
 }
 
 .search-form__input {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Preloader from './Preloader';
 import './SearchForm.css'
 
 export default function SearchForm({ onSearchWord }) {
@@ -30,7 +31,6 @@ export default function SearchForm({ onSearchWord }) {
                 <button className='search-form__button'>Искать</button>
                 <h3 className='search-form__subtitle search-form__results-numb'></h3>
             </form>
-
         </section>
     )
 }
