@@ -2,6 +2,9 @@
 }
 
 .new-book__container {
+  display: flex;
+  flex-direction: column;
+  background-color: burlywood;
 }
 
 .new-book__title {

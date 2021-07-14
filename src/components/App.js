@@ -5,14 +5,15 @@ import SearchForm from './SearchForm';
 import Preloader from './Preloader';
 import { openLibraryApi } from '../utils/OpenLibraryAPI'
 import NotFound from './NotFound';
+import NewBookList from './NewBookList';
 
 function App() {
 
-  const [data, setData] = useState('');
+  const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('')
+  const [error, setError] = useState()
 
-  const [foundedBooks, setFoundedBooks] = useState('')
+  const [foundedBooks, setFoundedBooks] = useState()
 
   useEffect(() => {
     setLoading(true)
@@ -20,9 +21,9 @@ function App() {
       .then((data) => setData(data))
       .then(() => setLoading())
       .catch(setError);
-    console.log(data)
-    console.log(data.docs)
   }, [])
+  console.log(data)
+  // console.log(data.docs[0].title)
 
   // function handleSearchWord(searchWord) {
   //   openLibraryApi.getDataList(searchWord)
@@ -41,7 +42,8 @@ function App() {
       <SearchForm></SearchForm>
       <Preloader isLoading={loading}></Preloader>
       <NotFound isEmpty={error}></NotFound>
-      <div>{data.docs[0].title}</div>
+      {data ? <div>{data.docs[0].title}</div> && <NewBookList initialBooks={data.docs}></NewBookList> : ''}
+
     </div>
   );
 }

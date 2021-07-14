@@ -4,7 +4,7 @@ import './SearchForm.css'
 
 export default function SearchForm({ onSearchWord }) {
 
-    const [searchWord, setSearchWord] = useState('')
+    const [searchWord, setSearchWord] = useState()
     function handleSearchWord(evt) {
         setSearchWord(evt.target.value);
     }
