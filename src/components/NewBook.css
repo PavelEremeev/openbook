@@ -4,15 +4,21 @@
 .new-book__container {
   display: flex;
   flex-direction: column;
-  background-color: burlywood;
+  background-color: rgb(204, 204, 204);
+  align-items: center;
+  max-width: 250px;
+  height: 400px;
 }
 
 .new-book__title {
+  font-family: "Raleway";
 }
 
 .new-book__author {
 }
 
 .new-book__cover {
-  background-image: url(https://cdn.profile.ru/wp-content/uploads/Yazyk-dobroy-voli-1535125255.jpg);
+  background-image: url("https://cdn.profile.ru/wp-content/uploads/Yazyk-dobroy-voli-1535125255.jpg");
+  width: 100%;
+  height: 250px;
 }
