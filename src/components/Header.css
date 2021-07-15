@@ -5,5 +5,31 @@
 .header__logo {
   font-family: "Raleway Semibold";
   color: black;
+  width: 8ch;
   margin-left: 150px;
+  border-right: solid 4px #b22222;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: printer 0.8s step-end infinite, start-print 1.2s steps(8);
+}
+
+@keyframes printer {
+  0% {
+    border-color: #b22222;
+  }
+
+  50% {
+    border-color: transparent;
+  }
+
+  100% {
+    border-color: #b22222;
+  }
+}
+
+@keyframes start-print {
+  0% {
+    width: 0;
+    color: #b22222;
+  }
 }

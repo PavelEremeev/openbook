@@ -19,7 +19,7 @@ export default function NewBookList({ initialBooks }) {
                 {elementsToRender.map((book, i) =>
                     <NewBook
                         title={book.title}
-                        author={book.author}
+                        author={book.author_name}
                         key={i}>
                     </NewBook>)}
             </div>

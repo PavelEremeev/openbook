@@ -10,19 +10,19 @@ import NewBookList from './NewBookList';
 function App() {
 
   const [data, setData] = useState();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState()
 
   const [foundedBooks, setFoundedBooks] = useState()
 
-  useEffect(() => {
-    setLoading(true)
-    openLibraryApi.getDataList()
-      .then((data) => setData(data))
-      .then(() => setLoading())
-      .catch(setError);
-  }, [])
-  console.log(data)
+  // useEffect(() => {
+  //   setLoading(true)
+  //   openLibraryApi.getDataList()
+  //     .then((data) => setData(data))
+  //     .then(() => setLoading())
+  //     .catch(setError);
+  // }, [])
+  // console.log(data)
   // console.log(data.docs[0].title)
 
   // function handleSearchWord(searchWord) {
