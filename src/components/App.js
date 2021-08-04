@@ -35,13 +35,24 @@ function App() {
   // }
 
   function handleSearchWord(searchWord) {
+    setError(false)
     setLoading(true)
     setData(null)
     openLibraryApi.getDataList(searchWord)
-      .then((data) => setData(data))
-      .then(() => setLoading())
-      .catch(setError)
-      .catch(setLoading);
+      .then((data) => {
+        if (data.numFound !== 0) {
+          setData(data)
+            .then(() => setLoading())
+        } if (data.numFound === 0) {
+          setLoading(false)
+          setError(true)
+        }
+      })
+      .catch((err) => {
+        setLoading(false)
+        setError(true)
+        console.log(err)
+      })
   }
 
   return (
