@@ -22,8 +22,7 @@ function App() {
   //     .then(() => setLoading())
   //     .catch(setError);
   // }, [])
-  // console.log(data)
-  // console.log(data.docs[0].title)
+
 
   // function handleSearchWord(searchWord) {
   //   openLibraryApi.getDataList(searchWord)
@@ -35,15 +34,24 @@ function App() {
   //     })
   // }
 
+  function handleSearchWord(searchWord) {
+    setLoading(true)
+    setData(null)
+    openLibraryApi.getDataList(searchWord)
+      .then((data) => setData(data))
+      .then(() => setLoading())
+      .catch(setError)
+      .catch(setLoading);
+  }
+
   return (
     <div className="App">
       <Header></Header>
-      {/* <SearchForm onSearchWord={handleSearchWord}></SearchForm> */}
-      <SearchForm></SearchForm>
+      <SearchForm onSearchWord={handleSearchWord}></SearchForm>
+      {/* <SearchForm></SearchForm> */}
       <Preloader isLoading={loading}></Preloader>
       <NotFound isEmpty={error}></NotFound>
-      {data ? <div>{data.docs[0].title}</div> && <NewBookList initialBooks={data.docs}></NewBookList> : ''}
-
+      {data ? <NewBookList initialBooks={data.docs}></NewBookList> : ''}
     </div>
   );
 }

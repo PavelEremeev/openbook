@@ -11,9 +11,8 @@ export default function SearchForm({ onSearchWord }) {
 
     function handleSubmit(evt) {
         evt.preventDefault();
-        onSearchWord({
-            searchWord
-        })
+        onSearchWord(
+            searchWord)
     }
 
     return (
