@@ -37,8 +37,8 @@ function App() {
         if (data.numFound !== 0) {
           console.log(data.docs)
           setData(data)
-            .then(() => setLoading())
-        } if (data.numFound === 0) {
+          setLoading()
+        } else {
           setLoading(false)
           setError(true)
         }
@@ -52,9 +52,8 @@ function App() {
 
   return (
     <div className="App">
-      <Header></Header>
+      <Header />
       <SearchForm onSearchWord={handleSearchWord} searchResult={data ? data : ''}></SearchForm>
-      {/* <SearchForm></SearchForm> */}
       <Preloader isLoading={loading}></Preloader>
       <NotFound isEmpty={error}></NotFound>
       {data ? <NewBookList initialBooks={data.docs}></NewBookList> : ''}
