@@ -37,9 +37,9 @@ function App() {
     openLibraryApi.getDataList(searchWord)
       .then((data) => {
         if (data.numFound !== 0) {
-          setData(data)
-          // .then(() => setLoading())
           console.log(data.docs)
+          setData(data)
+            .then(() => setLoading())
         } if (data.numFound === 0) {
           setLoading(false)
           setError(true)
