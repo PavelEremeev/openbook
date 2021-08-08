@@ -13,8 +13,6 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState()
 
-  const [foundedBooks, setFoundedBooks] = useState()
-
   // useEffect(() => {
   //   setLoading(true)
   //   openLibraryApi.getDataList()
@@ -55,7 +53,7 @@ function App() {
   return (
     <div className="App">
       <Header></Header>
-      <SearchForm onSearchWord={handleSearchWord}></SearchForm>
+      <SearchForm onSearchWord={handleSearchWord} searchResult={data ? data : ''}></SearchForm>
       {/* <SearchForm></SearchForm> */}
       <Preloader isLoading={loading}></Preloader>
       <NotFound isEmpty={error}></NotFound>

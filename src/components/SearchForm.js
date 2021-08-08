@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Preloader from './Preloader';
 import './SearchForm.css'
 
-export default function SearchForm({ onSearchWord }) {
+export default function SearchForm({ onSearchWord, searchResult }) {
 
     const [searchWord, setSearchWord] = useState()
     function handleSearchWord(evt) {
@@ -28,7 +28,10 @@ export default function SearchForm({ onSearchWord }) {
                 >
                 </input>
                 <button className='search-form__button'>Искать</button>
-                <h3 className='search-form__subtitle search-form__results-numb'></h3>
+                {searchResult
+                    ? <h4 className='search-form__results-numb'>По вашему запросу найдено {searchResult.numFound} книг</h4>
+                    : ''
+                }
             </form>
         </section>
     )
