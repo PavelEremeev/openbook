@@ -9,8 +9,6 @@ export default function NewBookList({ initialBooks }) {
         setRow(row + 5)
     }
 
-    const booksAmount = initialBooks.length
-
     let elementsToRender = initialBooks.slice(0, row)
 
     return (
@@ -18,6 +16,7 @@ export default function NewBookList({ initialBooks }) {
             <div className='new-book__list-container'>
                 {elementsToRender.map((book, i) =>
                     <NewBook
+                        cover={book.isbn ? book.isbn[0] || book.oclc[0] : ''}
                         title={book.title}
                         author={book.author_name}
                         key={i}>

@@ -23,15 +23,11 @@ function App() {
   //     .catch(setError);
   // }, [])
 
-
-  // function handleSearchWord(searchWord) {
-  //   openLibraryApi.getDataList(searchWord)
-  //     .then((res) => {
-  //       if (res.numFound !== 0) {
-  //         const foundedBooks = res.docs;
-
-  //       }
-  //     })
+  // function getCoverBook(searchCover) {
+  //   // const searchCover = data.docs
+  //   coversOpenLibraryAPI.getCoverList(searchCover)
+  //     .then((data) => setData(data))
+  //     .catch((err) => { console.log(err) })
   // }
 
   function handleSearchWord(searchWord) {
@@ -42,7 +38,8 @@ function App() {
       .then((data) => {
         if (data.numFound !== 0) {
           setData(data)
-            .then(() => setLoading())
+          // .then(() => setLoading())
+          console.log(data.docs)
         } if (data.numFound === 0) {
           setLoading(false)
           setError(true)

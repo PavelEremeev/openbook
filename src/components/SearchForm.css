@@ -3,10 +3,12 @@
   color: white;
   overflow: hidden;
   position: relative;
+  height: 300px;
 }
 
 .search-form__background {
   background-image: url(../images/books-1245690_1920.jpg);
+  background-size: cover;
   height: 300px;
   display: flex;
   flex-direction: column;
@@ -41,9 +43,10 @@
 }
 
 .search-form__form {
-  position: absolute;
-  bottom: 10%;
-  left: 30%;
+  position: relative;
+  bottom: 250px;
+  width: 600px;
+  margin: auto;
 }
 
 .search-form__input {
