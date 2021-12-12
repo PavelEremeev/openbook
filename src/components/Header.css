@@ -1,16 +1,24 @@
 .header__container {
   display: flex;
+  margin: 20px;
 }
 
-.header__logo {
+.header__text {
   font-family: "Raleway Semibold";
   color: black;
   width: 8ch;
-  margin-left: 150px;
+  margin: 0;
+  font-size: 2em;
   border-right: solid 4px #b22222;
   overflow: hidden;
   white-space: nowrap;
   animation: printer 0.8s step-end infinite, start-print 1.2s steps(8);
+}
+
+.header__logo {
+	width: 2em;
+	height: 2em;
+	margin-right: 10px;
 }
 
 @keyframes printer {
