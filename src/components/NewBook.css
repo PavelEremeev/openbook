@@ -10,7 +10,7 @@
 .new-book__container {
   display: flex;
   flex-direction: column;
-  background-color: rgb(204, 204, 204);
+  background-color: rgb(204, 204, 204, 0.3);
   align-items: center;
   max-width: 250px;
   height: 400px;
