@@ -1,6 +1,10 @@
 .header__container {
   display: flex;
+  width: 210px;
+  align-items: center;
   margin: 20px;
+  user-select: none;
+  cursor: pointer;
 }
 
 .header__text {
@@ -12,7 +16,7 @@
   border-right: solid 4px #b22222;
   overflow: hidden;
   white-space: nowrap;
-  animation: printer 0.8s step-end infinite, start-print 1.2s steps(8);
+  animation: printer 1.5s step-end infinite, start-print 6.2s steps(8);
 }
 
 .header__logo {

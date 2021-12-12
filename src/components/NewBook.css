@@ -1,5 +1,6 @@
 .new-book {
   transition: 0.3s ease-in;
+  cursor: pointer;
 }
 
 .new-book:hover {
