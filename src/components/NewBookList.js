@@ -38,7 +38,6 @@ export default function NewBookList({ initialBooks }) {
 						key={i}>
 					</NewBook>)}
 			</div>
-			<button onClick={nextRow} className='new-book__button'>Показать еще</button>
 		</section>
 	)
 }

@@ -16,7 +16,7 @@
   border-right: solid 4px #b22222;
   overflow: hidden;
   white-space: nowrap;
-  animation: printer 1.5s step-end infinite, start-print 6.2s steps(8);
+  animation: printer 1.5s step-end infinite, start-print 4.2s steps(8);
 }
 
 .header__logo {
