@@ -7,11 +7,6 @@ export default function NewBookList({ initialBooks }) {
 
 
 
-	function nextRow() {
-		setRow(row + 5)
-	}
-
-
 	function scrollHandler(e) {
 		if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
 			setRow(row + 10)

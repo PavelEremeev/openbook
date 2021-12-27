@@ -9,34 +9,34 @@ import NewBookList from './NewBookList';
 
 function App() {
 
-	const [data, setData] = useState();
+	const [books, setBooks] = useState();
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState()
 
 	// useEffect(() => {
 	//   setLoading(true)
-	//   openLibraryApi.getDataList()
-	//     .then((data) => setData(data))
+	//   openLibraryApi.getbooksList()
+	//     .then((books) => setBooks(books))
 	//     .then(() => setLoading())
 	//     .catch(setError);
 	// }, [])
 
 	// function getCoverBook(searchCover) {
-	//   // const searchCover = data.docs
+	//   // const searchCover = books.docs
 	//   coversOpenLibraryAPI.getCoverList(searchCover)
-	//     .then((data) => setData(data))
+	//     .then((books) => setBooks(books))
 	//     .catch((err) => { console.log(err) })
 	// }
 
 	function handleSearchWord(searchWord) {
 		setError(false)
 		setLoading(true)
-		setData(null)
-		openLibraryApi.getDataList(searchWord)
-			.then((data) => {
-				if (data.numFound !== 0) {
-					console.log(data.docs)
-					setData(data)
+		setBooks(null)
+		openLibraryApi.getbooksList(searchWord)
+			.then((books) => {
+				if (books.numFound !== 0) {
+					console.log(books.docs)
+					setBooks(books)
 					setLoading(false)
 				} else {
 					setLoading(false)
@@ -53,10 +53,10 @@ function App() {
 	return (
 		<div className="App">
 			<Header />
-			<SearchForm onSearchWord={handleSearchWord} searchResult={data ? data : ''}></SearchForm>
-			<Preloader isLoading={loading}></Preloader>
-			<NotFound isEmpty={error}></NotFound>
-			{data ? <NewBookList initialBooks={data.docs}></NewBookList> : ''}
+			<SearchForm onSearchWord={handleSearchWord} searchResult={books ? books : ''} />
+			<Preloader isLoading={loading} />
+			<NotFound isEmpty={error} />
+			{books ? <NewBookList initialBooks={books.docs} /> : ''}
 		</div>
 	);
 }
