@@ -6,12 +6,14 @@ import Preloader from './Preloader';
 import { openLibraryApi } from '../utils/OpenLibraryAPI'
 import NotFound from './NotFound';
 import NewBookList from './NewBookList';
+import Modal from './Modal';
 
 function App() {
 
 	const [books, setBooks] = useState();
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState()
+	const [active, setActive] = useState(true)
 
 	// useEffect(() => {
 	//   setLoading(true)
@@ -57,6 +59,7 @@ function App() {
 			<Preloader isLoading={loading} />
 			<NotFound isEmpty={error} />
 			{books ? <NewBookList initialBooks={books.docs} /> : ''}
+			<Modal active={active} setActive={setActive}></Modal>
 		</div>
 	);
 }
