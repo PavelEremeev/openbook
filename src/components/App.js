@@ -33,7 +33,7 @@ function App() {
 		setError(false)
 		setLoading(true)
 		setBooks(null)
-		openLibraryApi.getbooksList(searchWord)
+		openLibraryApi.getDataList(searchWord)
 			.then((books) => {
 				if (books.numFound !== 0) {
 					console.log(books.docs)
