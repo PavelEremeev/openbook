@@ -8,12 +8,26 @@
 	position: fixed;
 	align-items: center;
 	justify-content: center;
+	opacity: 0;
+	transition: 0.5s;
+	pointer-events: none;
+}
+
+.modal.modal_active {
+	opacity: 1;
+	pointer-events: all;
 }
 
 .modal__container {
-	height: 200px;
-	width: 400px;
 	background-color: white;
 	border-radius: 15px;
 	padding: 20px;
+	transform: scale(0.5);
+	transition: 0.5s all;
+	width: 50%;
+
+}
+
+.modal__container.modal__container_active {
+	transform: scale(1)
 }
