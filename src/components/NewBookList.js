@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './NewBookList.css'
 import NewBook from './NewBook.js'
 
-export default function NewBookList({ initialBooks }) {
+export default function NewBookList({ initialBooks, setActive }) {
 	const [row, setRow] = useState(10)
 
 
@@ -30,8 +30,9 @@ export default function NewBookList({ initialBooks }) {
 						cover={book.isbn ? book.isbn[0] : ''}
 						title={book.title}
 						author={book.author_name}
-						key={i}>
-					</NewBook>)}
+						key={i}
+						setActive={setActive}
+					/>)}
 			</div>
 		</section>
 	)

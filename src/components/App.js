@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import './App.css';
 import Header from './Header.js'
 import SearchForm from './SearchForm';
@@ -6,13 +7,14 @@ import Preloader from './Preloader';
 import { openLibraryApi } from '../utils/OpenLibraryAPI'
 import NotFound from './NotFound';
 import NewBookList from './NewBookList';
+import Modal from './Modal';
 
 function App() {
 
 	const [books, setBooks] = useState();
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState()
-
+	const [active, setActive] = useState(false);
 
 	// useEffect(() => {
 	//   setLoading(true)
@@ -57,8 +59,8 @@ function App() {
 			<SearchForm onSearchWord={handleSearchWord} searchResult={books ? books : ''} />
 			<Preloader isLoading={loading} />
 			<NotFound isEmpty={error} />
-			{books ? <NewBookList initialBooks={books.docs} /> : ''}
-
+			{books ? <NewBookList initialBooks={books.docs} setActive={setActive} /> : ''}
+			<Modal active={active} setActive={setActive}></Modal>
 		</div>
 	);
 }
