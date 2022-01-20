@@ -24,6 +24,9 @@
 }
 
 .new-book__author {
+	font-family: "Raleway";
+	font-size: 10px;
+	max-width: 150px;
 }
 
 .new-book__cover {
