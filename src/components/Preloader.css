@@ -1,8 +1,8 @@
 .preloader {
 	display: none;
-    margin: 30px auto 0;
-    width: 250px;
-    height: 250px;
+    margin: 30px auto;
+    width: 270px;
+    height: 270px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -13,17 +13,12 @@
 	opacity: 0;
 }
 
-/* .preloader_opened {
+.preloader_opened {
   display: flex;
-
-} */
-
-.preloader.preloader_opened {
-	display: flex;
-	transform: scale(1.0);
-	opacity: 1;
-	
+  opacity: 1;
+  transform: scale(1);
 }
+
 
 .preloader__circle {
   display: block;
