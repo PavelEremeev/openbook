@@ -13,21 +13,22 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transition: 0.3s ease-out;
-  opacity: 0.7;
+  transition: 1.3s ease-out;
+  filter: blur(2px);
+
 }
 
 .search-form__background:hover {
-  filter: blur(5px);
-  transition: 0.3s ease-out;
-  transform: scale(1.1);
+  filter: blur(10px);
+  transition: 1.3s ease-out;
+  transform: scale(1.5);
+
 }
 
 .search-form:hover .search-form__background {
-  filter: blur(5px);
-  transition: 0.3s ease-out;
-  transform: scale(1.1);
-  opacity: 1;
+  filter: blur(10px);
+  transition: 1.3s ease-out;
+  transform: scale(1.5);
 }
 
 .search-form__title {
@@ -41,6 +42,12 @@
   font-family: "Raleway";
   margin-top: 0;
 }
+.search-form__text-logo {
+	color:black;
+	background-color: white;
+	opacity: 0.8;
+  }
+
 
 .search-form__form {
   position: relative;
@@ -49,10 +56,60 @@
   margin: auto;
 }
 
+@media screen and (max-width: 720px) {
+	.search-form__button {
+		font-size: 16px;
+		height: 45px;
+	}
+	.search-form__input {
+		height: 45px;
+	
+	}
+    .search-form__form {
+		max-width: 75%;
+
+    }
+
+	.search-form__title {
+		font-size: 38px;
+	  }
+
+	.search-form__subtitle {
+		font-size: 17px;
+		font-family: "Raleway";
+		margin-top: 0;
+	}
+
+}
+
+@media screen and (max-width: 550px) {
+
+    .search-form__form {
+		max-width: 80%;
+
+    }
+
+	.search-form__title {
+		font-size: 28px;
+	  }
+
+
+
+}
+
+
+
+.search-form__container {
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	border-radius: 15px;
+}
+
 .search-form__input {
   width: 75%;
   border: none;
-  height: 40px;
+  height: 60px;
   outline: none;
   padding: 0;
   padding-left: 20px;
@@ -65,12 +122,12 @@
 
 .search-form__button {
   border: none;
-  height: 40px;
+  height: 60px;
   padding: 0;
-  width: 20%;
+  width: 25%;
   font-family: "Raleway SemiBold";
   transition: 0.3s ease;
-  font-size: 17px;
+  font-size: 21px;
   background-color: #b22222;
   opacity: 0.8;
   color: white;

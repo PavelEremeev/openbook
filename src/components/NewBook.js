@@ -19,6 +19,5 @@ export default function NewBook({ title, author, cover, onClick }) {
 				<h6 className='new-book__author'>{author}</h6>
 			</div>
 		</section>
-
 	)
 }

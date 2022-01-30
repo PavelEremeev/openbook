@@ -26,7 +26,7 @@ export default function NewBookList({ initialBooks, onBookClick }) {
 			<div className='new-book__list-container'>
 				{elementsToRender.map((book, i) =>
 					<NewBook
-						cover={book.isbn ? book.isbn[0] : ''}
+						cover={book.isbn ? book.isbn[1] : ''}
 						title={book.title}
 						author={book.author_name}
 						key={i}
