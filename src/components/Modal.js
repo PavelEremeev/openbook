@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { DataContext } from './DataContext';
 import './Modal.css';
 
 
-export default function Modal({ active, setActive, children }) {
+export default function Modal({ children }) {
 
-	function handlePopupIsOpen() {
-		setActive(false)
+	const { active, setActive } = useContext(DataContext)
+
+
+	function handlePopupToggle() {
+		setActive(prev => !prev)
 	}
 
 	return (
@@ -13,7 +17,7 @@ export default function Modal({ active, setActive, children }) {
 			{active
 				? 'modal modal_active'
 				: 'modal'}
-			onClick={handlePopupIsOpen}>
+			onClick={handlePopupToggle}>
 			<div
 				className=
 				{active

@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import './App.css';
+
+import { DataContext } from './DataContext'
 import Header from './Header.js'
 import SearchForm from './SearchForm';
 import Preloader from './Preloader';
 import { openLibraryApi } from '../utils/OpenLibraryAPI'
 import NotFound from './NotFound';
 import NewBookList from './NewBookList';
+import NewBook from './NewBook';
 import Modal from './Modal';
 
 function App() {
@@ -15,21 +18,18 @@ function App() {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState()
 	const [active, setActive] = useState(false);
+	const [currentBook, setCurrentBook] = useState();
 
-	// useEffect(() => {
-	//   setLoading(true)
-	//   openLibraryApi.getbooksList()
-	//     .then((books) => setBooks(books))
-	//     .then(() => setLoading())
-	//     .catch(setError);
-	// }, [])
+	function handlePopupToggle() {
+		setActive(prev => !prev)
+	}
 
-	// function getCoverBook(searchCover) {
-	//   // const searchCover = books.docs
-	//   coversOpenLibraryAPI.getCoverList(searchCover)
-	//     .then((books) => setBooks(books))
-	//     .catch((err) => { console.log(err) })
-	// }
+	const handleBookClick = useCallback(
+		book => {
+			setCurrentBook(book)
+		},
+		[]
+	);
 
 	function handleSearchWord(searchWord) {
 		setError(false)
@@ -55,12 +55,21 @@ function App() {
 
 	return (
 		<div className="App">
-			<Header />
-			<SearchForm onSearchWord={handleSearchWord} searchResult={books ? books : ''} />
-			<Preloader isLoading={loading} />
-			<NotFound isEmpty={error} />
-			{books ? <NewBookList initialBooks={books.docs} setActive={setActive} /> : ''}
-			<Modal active={active} setActive={setActive}></Modal>
+			<DataContext.Provider value={{ books, active, setActive }}>
+				<Header />
+				<SearchForm onSearchWord={handleSearchWord} searchResult={books ? books : ''} />
+				<Preloader isLoading={loading} />
+				<NotFound isEmpty={error} />
+				{books ? <NewBookList initialBooks={books.docs} onBookClick={handleBookClick && handlePopupToggle} /> : ''}
+
+				{currentBook && <Modal>
+					<NewBook
+						cover={currentBook.isbn ? currentBook.isbn[0] : ''}
+						title={currentBook.title}
+						author={currentBook.author_name}
+					/>
+				</Modal>}
+			</DataContext.Provider>
 		</div>
 	);
 }

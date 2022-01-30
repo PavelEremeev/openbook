@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react'
 import './NewBookList.css'
 import NewBook from './NewBook.js'
 
-export default function NewBookList({ initialBooks, setActive }) {
+export default function NewBookList({ initialBooks, onBookClick }) {
 	const [row, setRow] = useState(10)
-
 
 
 	function scrollHandler(e) {
@@ -20,7 +19,7 @@ export default function NewBookList({ initialBooks, setActive }) {
 		}
 	}, [row])
 
-	let elementsToRender = initialBooks.slice(0, row)
+	const elementsToRender = initialBooks.slice(0, row)
 
 	return (
 		<section className='new-book__list'>
@@ -31,7 +30,7 @@ export default function NewBookList({ initialBooks, setActive }) {
 						title={book.title}
 						author={book.author_name}
 						key={i}
-						setActive={setActive}
+						onClick={() => onBookClick(book)}
 					/>)}
 			</div>
 		</section>
