@@ -1,11 +1,9 @@
-import React, { useContext } from 'react';
-import { DataContext } from './DataContext';
+import React from 'react';
+
 import './Modal.css';
 
 
-export default function Modal({ children }) {
-
-	const { active, setActive } = useContext(DataContext)
+export default function Modal({ children, active, setActive }) {
 
 
 	function handlePopupToggle() {

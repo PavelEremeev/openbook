@@ -2,7 +2,6 @@ import React, { useState, useCallback } from 'react';
 
 import './App.css';
 
-import { DataContext } from './DataContext'
 import Header from './Header.js'
 import SearchForm from './SearchForm';
 import Preloader from './Preloader';
@@ -17,16 +16,14 @@ function App() {
 	const [books, setBooks] = useState();
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState()
-	const [active, setActive] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
 	const [currentBook, setCurrentBook] = useState();
 
-	function handlePopupToggle() {
-		setActive(prev => !prev)
-	}
 
 	const handleBookClick = useCallback(
 		book => {
 			setCurrentBook(book)
+			setIsOpen(prev => !prev)
 		},
 		[]
 	);
@@ -55,21 +52,19 @@ function App() {
 
 	return (
 		<div className="App">
-			<DataContext.Provider value={{ books, active, setActive }}>
-				<Header />
-				<SearchForm onSearchWord={handleSearchWord} searchResult={books ? books : ''} />
-				<Preloader isLoading={loading} />
-				<NotFound isEmpty={error} />
-				{books ? <NewBookList initialBooks={books.docs} onBookClick={handleBookClick && handlePopupToggle} /> : ''}
+			<Header />
+			<SearchForm onSearchWord={handleSearchWord} searchResult={books ? books : ''} />
+			<Preloader isLoading={loading} />
+			<NotFound isEmpty={error} />
+			{books ? <NewBookList initialBooks={books.docs} onBookClick={handleBookClick} /> : ''}
 
-				{currentBook && <Modal>
-					<NewBook
-						cover={currentBook.isbn ? currentBook.isbn[0] : ''}
-						title={currentBook.title}
-						author={currentBook.author_name}
-					/>
-				</Modal>}
-			</DataContext.Provider>
+			{currentBook && <Modal active={isOpen} setActive={setIsOpen}>
+				<NewBook
+					cover={currentBook.isbn[1]}
+					title={currentBook.title}
+					author={currentBook.author_name}
+				/>
+			</Modal>}
 		</div>
 	);
 }
