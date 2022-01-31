@@ -19,7 +19,7 @@ export default function SearchForm({ onSearchWord, searchResult }) {
 			<div className='search-form__background'></div>
 			<form onSubmit={handleSubmit} className='search-form__form'>
 				<h2 className='search-form__title'>Найти то, что под рукой...</h2>
-				<p className='search-form__subtitle'>ищите и читайте любимые книги вместе с <b className='search-form__text-logo'>openbook</b></p>
+				<p className='search-form__subtitle'>ищите и читайте книги вместе с <b className='search-form__text-logo'>openbook</b></p>
 				<div className='search-form__container'>
 					<input className='search-form__input'
 						placeholder='Введите название книги'
