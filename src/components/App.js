@@ -8,7 +8,7 @@ import Preloader from './Preloader';
 import { openLibraryApi } from '../utils/OpenLibraryAPI'
 import NotFound from './NotFound';
 import NewBookList from './NewBookList';
-import NewBook from './NewBook';
+import BookInfo from './BookInfo'
 import Modal from './Modal';
 
 function App() {
@@ -24,6 +24,7 @@ function App() {
 		book => {
 			setCurrentBook(book)
 			setIsOpen(prev => !prev)
+
 		},
 		[]
 	);
@@ -59,11 +60,7 @@ function App() {
 			{books ? <NewBookList initialBooks={books.docs} onBookClick={handleBookClick} /> : ''}
 
 			{currentBook && <Modal active={isOpen} setActive={setIsOpen}>
-				<NewBook
-					cover={currentBook.isbn[1]}
-					title={currentBook.title}
-					author={currentBook.author_name}
-				/>
+				<BookInfo book={currentBook} />
 			</Modal>}
 		</div>
 	);
