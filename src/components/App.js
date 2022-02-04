@@ -1,33 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+
 import './App.css';
+
 import Header from './Header.js'
 import SearchForm from './SearchForm';
 import Preloader from './Preloader';
 import { openLibraryApi } from '../utils/OpenLibraryAPI'
 import NotFound from './NotFound';
 import NewBookList from './NewBookList';
+import BookInfo from './BookInfo'
+import Modal from './Modal';
 
 function App() {
 
 	const [books, setBooks] = useState();
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState()
+	const [isOpen, setIsOpen] = useState(false);
+	const [currentBook, setCurrentBook] = useState();
 
 
-	// useEffect(() => {
-	//   setLoading(true)
-	//   openLibraryApi.getbooksList()
-	//     .then((books) => setBooks(books))
-	//     .then(() => setLoading())
-	//     .catch(setError);
-	// }, [])
+	const handleBookClick = useCallback(
+		book => {
+			setCurrentBook(book)
+			setIsOpen(prev => !prev)
 
-	// function getCoverBook(searchCover) {
-	//   // const searchCover = books.docs
-	//   coversOpenLibraryAPI.getCoverList(searchCover)
-	//     .then((books) => setBooks(books))
-	//     .catch((err) => { console.log(err) })
-	// }
+		},
+		[]
+	);
 
 	function handleSearchWord(searchWord) {
 		setError(false)
@@ -57,7 +57,11 @@ function App() {
 			<SearchForm onSearchWord={handleSearchWord} searchResult={books ? books : ''} />
 			<Preloader isLoading={loading} />
 			<NotFound isEmpty={error} />
-			{books ? <NewBookList initialBooks={books.docs} /> : ''}
+			{books ? <NewBookList initialBooks={books.docs} onBookClick={handleBookClick} /> : ''}
+
+			{currentBook && <Modal active={isOpen} setActive={setIsOpen}>
+				<BookInfo book={currentBook} />
+			</Modal>}
 		</div>
 	);
 }

@@ -1,0 +1,33 @@
+.book-info {
+	display: flex;
+	flex-direction: row;
+
+	font-family: "Raleway";
+}
+
+.book-info__container  {
+	display: flex;
+	flex-direction: column;
+	width: 15vw;
+	margin-left: 30px;
+    margin-top: 15px;
+}
+
+.book-info__title {
+color: #b22222;
+font-family: "Raleway Semibold";
+}
+
+.book-info__cover{
+	background-image: url("../images/book_cover_if_unload.png");
+	border-radius: 16px;
+    width: 30vw;
+    height: 45vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+	background-position: center;
+}
+
+.book-info__text {
+	font-size: 12px;
+}
